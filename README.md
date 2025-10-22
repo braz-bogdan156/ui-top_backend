@@ -1,61 +1,96 @@
-🧱 Backend – Todo API
+🧱 Backend – Todo API (Nest.js)
 
-Backend for the Todo Manager app.
-Built with Node.js + Express and SQLite, it provides CRUD operations, category filtering, and business logic validation.
+Backend for the Todo Manager application.
+Built with Nest.js + TypeScript and SQLite, providing a modular architecture for task and category management.
 
 🛠 Tech Stack
 
-🟢 Node.js + Express.js — REST API server
+🟢 Nest.js (Node.js + Express under the hood) — modular backend framework
 
-🗄️ SQLite + Sequelize — lightweight database
+🗄️ TypeORM + SQLite — database ORM and local storage
 
-🧩 CORS + dotenv — cross-origin setup & environment variables
+⚙️ TypeScript — static typing and clean architecture
 
-📘 TypeScript — type-safe backend logic
+🔐 dotenv — environment configuration
 
-🚀 API Endpoints
+🚀 CORS + ConfigModule — secure configuration and cross-origin support
+
+🚀 Functionality
+
+Create, update, and delete tasks
+
+Filter tasks by category
+
+Mark tasks as completed
+
+Limit of 5 tasks per category enforced on the backend
+
+Get list of categories
+
+Validation and clear error handling
+
+🧩 API Endpoints
 Method	Endpoint	Description
 GET	/todos	Get all todos (optional ?category= filter)
 POST	/todos	Create a new todo
 PATCH	/todos/:id	Update todo status (completed / not)
 DELETE	/todos/:id	Delete a todo
 GET	/categories	Get list of categories
-⚙️ Business Logic
-
-Each category can contain up to 5 tasks
-
-If the limit is exceeded → returns 400 Bad Request
-
-All endpoints handle validation and errors gracefully
-
-🧩 Project Structure
+🧠 Project Structure
 backend/
 ├─ src/
-│  ├─ db/              # SQLite database setup
-│  ├─ models/          # Sequelize models (Todo, Category)
-│  ├─ routes/          # Express routes
-│  ├─ controllers/     # Request handlers
-│  ├─ middleware/      # Error handling
-│  └─ server.ts        # Main entry point
-└─ package.json
+│  ├─ todos/
+│  │  ├─ todo.entity.ts          # Todo entity definition
+│  │  ├─ todos.controller.ts     # Controller (handles HTTP requests)
+│  │  ├─ todos.service.ts        # Business logic and DB interaction
+│  │  └─ todos.module.ts         # Module declaration
+│  │
+│  ├─ categories/
+│  │  ├─ category.entity.ts      # Category entity
+│  │  ├─ categories.controller.ts# Controller for categories
+│  │  ├─ categories.service.ts   # Category business logic
+│  │  └─ categories.module.ts    # Module declaration
+│  │
+│  ├─ app.controller.ts          # Root controller
+│  ├─ app.module.ts              # Root application module
+│  ├─ app.service.ts             # Shared application services
+│  └─ main.ts                    # Application entry point
+│
+├─ .env                          # Environment variables
+├─ .gitignore
+├─ package.json
+└─ tsconfig.json
 
 ⚙️ Setup & Run
 
-Clone and install dependencies
+Navigate to backend folder
 
 cd backend
+
+
+Install dependencies
+
 npm install
 
 
 Create .env file:
 
 PORT=7000
-DATABASE_URL=./database.sqlite
+
+FRONTEND_URL=http://localhost:3000
 
 
-Run the server:
+Run the server in development mode
 
-npm run dev
+npm run start:dev
 
 
-API will be available at 👉 http://localhost:7000
+The API will be available at 👉 http://localhost:7000
+
+💡 Notes
+
+Database: powered by SQLite via TypeORM
+
+Architecture: fully modular (Todos + Categories)
+
+Error handling: handled automatically by Nest Exception Filters
