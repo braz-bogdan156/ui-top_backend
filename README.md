@@ -29,38 +29,6 @@ Get list of categories
 
 Validation and clear error handling
 
-🧩 API Endpoints
-Method	Endpoint	Description
-GET	/todos	Get all todos (optional ?category= filter)
-POST	/todos	Create a new todo
-PATCH	/todos/:id	Update todo status (completed / not)
-DELETE	/todos/:id	Delete a todo
-GET	/categories	Get list of categories
-🧠 Project Structure
-backend/
-├─ src/
-│  ├─ todos/
-│  │  ├─ todo.entity.ts          # Todo entity definition
-│  │  ├─ todos.controller.ts     # Controller (handles HTTP requests)
-│  │  ├─ todos.service.ts        # Business logic and DB interaction
-│  │  └─ todos.module.ts         # Module declaration
-│  │
-│  ├─ categories/
-│  │  ├─ category.entity.ts      # Category entity
-│  │  ├─ categories.controller.ts# Controller for categories
-│  │  ├─ categories.service.ts   # Category business logic
-│  │  └─ categories.module.ts    # Module declaration
-│  │
-│  ├─ app.controller.ts          # Root controller
-│  ├─ app.module.ts              # Root application module
-│  ├─ app.service.ts             # Shared application services
-│  └─ main.ts                    # Application entry point
-│
-├─ .env                          # Environment variables
-├─ .gitignore
-├─ package.json
-└─ tsconfig.json
-
 ⚙️ Setup & Run
 
 Navigate to backend folder
